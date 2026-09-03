@@ -6,6 +6,7 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
+import json
 
 
 @ensure_annotations
@@ -19,6 +20,11 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise ValueError("yaml file is empty")
     except Exception as e:
         raise e
-    
+
+@ensure_annotations
+def save_json(path: Path, data: dict):
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+    logger.info(f"json file saved at: {path}")
 
 

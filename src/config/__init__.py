@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from src.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.utils.common import read_yaml
-from src.entity import DataIngestionConfig, DataTransformationConfig, ModelTrainerConfig
+from src.entity import DataIngestionConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig
 
 class ConfigurationManager:
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH):
@@ -44,4 +44,19 @@ class ConfigurationManager:
             learning_rate=params.learning_rate,
             per_device_train_batch_size=params.per_device_train_batch_size,
             weight_decay=params.weight_decay
+        )
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+        params = self.params.TrainingArguments
+        os.makedirs(config.root_dir, exist_ok=True)
+
+        return ModelEvaluationConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            model_path=Path(config.model_path),
+            tokenizer_path=Path(config.tokenizer_path),
+            metric_file_name=Path(config.metric_file_name),
+            mlflow_uri=os.environ.get("MLFLOW_TRACKING_URI", ""),
+            all_params=params
         )

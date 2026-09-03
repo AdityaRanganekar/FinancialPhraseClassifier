@@ -22,3 +22,13 @@ class ModelTrainerConfig:
     learning_rate: float
     per_device_train_batch_size: int
     weight_decay: float
+
+@dataclass()
+class ModelEvaluationConfig:
+    root_dir: Path
+    data_path: Path
+    model_path: Path
+    tokenizer_path: Path
+    metric_file_name: Path
+    mlflow_uri: str
+    all_params: dict
