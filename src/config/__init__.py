@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from src.constants import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.utils.common import read_yaml
-from src.entity import DataIngestionConfig, DataTransformationConfig
+from src.entity import DataIngestionConfig, DataTransformationConfig, ModelTrainerConfig
 
 class ConfigurationManager:
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH):
@@ -28,4 +28,20 @@ class ConfigurationManager:
             root_dir=Path(config.root_dir),
             data_path=Path(config.data_path),
             tokenizer_name=config.tokenizer_name
+        )
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.TrainingArguments
+        
+        os.makedirs(config.root_dir, exist_ok=True)
+
+        return ModelTrainerConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            model_ckpt=config.model_ckpt,
+            num_train_epochs=params.num_train_epochs,
+            learning_rate=params.learning_rate,
+            per_device_train_batch_size=params.per_device_train_batch_size,
+            weight_decay=params.weight_decay
         )

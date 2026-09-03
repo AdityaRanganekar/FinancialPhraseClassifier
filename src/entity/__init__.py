@@ -12,3 +12,13 @@ class DataTransformationConfig:
     root_dir: Path
     data_path: Path
     tokenizer_name: str
+
+@dataclass()
+class ModelTrainerConfig:
+    root_dir: Path
+    data_path: Path
+    model_ckpt: str
+    num_train_epochs: int
+    learning_rate: float
+    per_device_train_batch_size: int
+    weight_decay: float

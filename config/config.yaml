@@ -9,3 +9,8 @@ data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/financial_dataset
   tokenizer_name: ProsusAI/finbert
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  data_path: artifacts/data_transformation/finbert_dataset
+  model_ckpt: ProsusAI/finbert
