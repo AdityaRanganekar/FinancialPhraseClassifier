@@ -1,0 +1,22 @@
+torch
+transformers
+datasets
+evaluate
+accelerate
+scikit-learn
+pandas
+numpy
+tqdm
+PyYAML
+pydantic
+matplotlib
+fastapi
+uvicorn
+Jinja2
+mlflow
+boto3
+notebook
+ensure
+python-box
+
+-e .

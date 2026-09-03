@@ -1,1 +1,4 @@
 venv/
+FinancialPhraseClassifier.egg-info/
+.vscode/
+artifacts/
