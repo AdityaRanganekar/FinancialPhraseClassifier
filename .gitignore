@@ -2,3 +2,5 @@ venv/
 FinancialPhraseClassifier.egg-info/
 .vscode/
 artifacts/
+*.log
+logs/
