@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.py[cod]
+.git
+.gitignore
+logs/
+research/
+.ipynb_checkpoints/
+FinancialPhraseClassifier.egg-info/
+.vscode/
