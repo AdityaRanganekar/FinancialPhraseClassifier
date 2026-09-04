@@ -4,3 +4,5 @@ FinancialPhraseClassifier.egg-info/
 artifacts/
 *.log
 logs/
+__pycache__/
+*.py[cod]
