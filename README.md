@@ -21,6 +21,29 @@ AWS-based CI/CD workflow.
 - Builds a CPU-oriented Docker image and deploys it to AWS Elastic Beanstalk
   through Amazon ECR.
 
+
+## Project structure
+
+```text
+.
+├── app.py                         # FastAPI application and API routes
+├── main.py                        # Ingestion, transformation, evaluation runner
+├── config/config.yaml             # Artifact and model paths
+├── params.yaml                    # Training hyperparameters
+├── Dockerfile                     # CPU API container
+├── requirements.txt               # Python dependencies
+├── src/
+│   ├── components/                # Ingestion, transformation, training, evaluation
+│   ├── pipeline/prediction.py     # Local model inference pipeline
+│   ├── config/                    # YAML-to-dataclass configuration
+│   ├── entity/                    # Pipeline configuration dataclasses
+│   ├── logger/                    # File logger
+│   └── exception/                 # Project exception type
+├── research/                      # Colab/Jupyter experiment notebooks
+└── .github/workflows/main.yml     # ECR and Elastic Beanstalk deployment
+```
+
+
 ## Architecture
 
 ```mermaid
@@ -182,26 +205,6 @@ for every model artifact or production deployment.
   server. When configured with a remote registry, the evaluator registers
   `FinBERT_Sentiment_Model`.
 
-## Project structure
-
-```text
-.
-├── app.py                         # FastAPI application and API routes
-├── main.py                        # Ingestion, transformation, evaluation runner
-├── config/config.yaml             # Artifact and model paths
-├── params.yaml                    # Training hyperparameters
-├── Dockerfile                     # CPU API container
-├── requirements.txt               # Python dependencies
-├── src/
-│   ├── components/                # Ingestion, transformation, training, evaluation
-│   ├── pipeline/prediction.py     # Local model inference pipeline
-│   ├── config/                    # YAML-to-dataclass configuration
-│   ├── entity/                    # Pipeline configuration dataclasses
-│   ├── logger/                    # File logger
-│   └── exception/                 # Project exception type
-├── research/                      # Colab/Jupyter experiment notebooks
-└── .github/workflows/main.yml     # ECR and Elastic Beanstalk deployment
-```
 
 ## Research notebooks
 
