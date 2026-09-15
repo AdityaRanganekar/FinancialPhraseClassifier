@@ -47,3 +47,4 @@ if __name__ == "__main__":
     except Exception as e:
         logger.error("An error occurred during pipeline execution")
         raise PhraserException(e, sys)
+
