@@ -17,7 +17,7 @@ class TextInput(BaseModel):
 
 @app.get("/", tags=["General"])
 async def index():
-    return RedirectResponse(url="/docs")
+    return {"message": "Financial Sentiment API is running. Visit /docs for the Swagger UI."}
 
 @app.get("/train", tags=["Training Pipeline"])
 async def trigger_training():
